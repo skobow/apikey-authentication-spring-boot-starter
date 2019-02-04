@@ -26,16 +26,20 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'signing'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+    id 'com.github.ben-manes.versions' version '0.20.0'
 }
 
 ext {
-    springBootVersion = '2.0.4.RELEASE'
+    springBootVersion = '2.1.2.RELEASE'
+    springVersion = '5.1.3.RELEASE'
+    junitVersion = '4.12'
 }
 
 allprojects {
     group 'net.skobow'
-    version '1.0-SNAPSHOT'
+    version '0.1.0-SNAPSHOT'
 
     publishing {
         repositories {
@@ -49,6 +53,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'signing'
     apply plugin: 'io.spring.dependency-management'
 
     dependencyManagement {
@@ -62,10 +67,26 @@ subprojects {
         classifier = 'sources'
     }
 
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier "javadoc"
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives jar
+        archives sourcesJar
+        archives javadocJar
+    }
+
     sourceCompatibility = 1.8
 
     repositories {
         jcenter()
+    }
+
+    dependencies {
+        testImplementation("org.springframework:spring-test:${springVersion}")
+        testImplementation("junit:junit:${rootProject.junitVersion}")
     }
 }
 
@@ -76,11 +97,72 @@ dependencies {
 publishing {
     publications {
         starter(MavenPublication) {
+            customizePom(pom)
             groupId = "${groupId}"
             artifactId = 'apikey-authentication-spring-boot-starter'
             version = "${version}"
 
             from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.starter
+}
+
+def customizePom(pom) {
+    pom.withXml {
+        def root = asNode()
+
+        // eliminate test-scoped dependencies (no need in maven central POMs)
+        root.dependencies.removeAll { dep ->
+            dep.scope == "test"
+        }
+
+        // add all items necessary for maven central publication
+        root.children().last() + {
+            resolveStrategy = Closure.DELEGATE_FIRST
+
+            description 'Lean and easy to use API key filter to protect endpoints with API key authentication'
+            name 'ApiKeyAuthentication'
+            url 'https://github.com/skobow/apikey-authentication-spring-boot-starter'
+            organization {
+                name 'skobow'
+                url 'https://github.com/skobow'
+            }
+            issueManagement {
+                system 'GitHub'
+                url 'https://github.com/skobow/apikey-authentication-spring-boot-starter/issues'
+            }
+            licenses {
+                license {
+                    name 'MIT'
+                    url 'https://github.com/skobow/apikey-authentication-spring-boot-starter/blob/master/LICENSE'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                url 'https://github.com/skobow/apikey-authentication-spring-boot-starter'
+                connection 'scm:git:git://github.com:skobow/apikey-authentication-spring-boot-starter.git'
+                developerConnection 'scm:git:ssh://git@github.com:skobow/apikey-authentication-spring-boot-starter.git'
+            }
+            developers {
+                developer {
+                    name 'skobow'
+                    email 'sk@skobow.net'
+                    url 'https://github.com/skobow'
+                }
+            }
         }
     }
 }

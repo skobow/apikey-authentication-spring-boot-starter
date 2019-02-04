@@ -41,13 +41,24 @@ dependencies {
 publishing {
     publications {
         library(MavenPublication) {
+            customizePom(pom)
             groupId = "${groupId}"
             artifactId = 'apikey-authentication'
             version = "${version}"
 
-            artifact sourcesJar
+            artifact(sourcesJar) {
+                classifier = 'sources'
+            }
+
+            artifact(javadocJar) {
+                classifier = 'javadoc'
+            }
 
             from components.java
         }
     }
+}
+
+signing {
+    sign publishing.publications.library
 }
