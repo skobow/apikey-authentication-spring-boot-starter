@@ -85,14 +85,14 @@ subprojects {
     }
 
     dependencies {
-        implementation('org.slf4j:slf4j-api:1.7.25')
-        testImplementation("org.springframework:spring-test:${springVersion}")
-        testImplementation("junit:junit:${rootProject.junitVersion}")
+        compile('org.slf4j:slf4j-api:1.7.25')
+        testCompile("org.springframework:spring-test:${springVersion}")
+        testCompile("junit:junit:${rootProject.junitVersion}")
     }
 }
 
 dependencies {
-    implementation(project(':apikey-authentication-spring-boot-autoconfigure'))
+    compile(project(':apikey-authentication-spring-boot-autoconfigure'))
 }
 
 publishing {
