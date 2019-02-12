@@ -31,10 +31,8 @@ dependencies {
 
     compile(project(':apikey-authentication'))
 
-    compile('org.springframework.boot:spring-boot')
-    compile('org.springframework.boot:spring-boot-autoconfigure')
-
-    testCompile('junit:junit')
+    compile("org.springframework.boot:spring-boot:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
 }
 
 publishing {
