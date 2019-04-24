@@ -12,7 +12,7 @@ To install simple add the dependency to you project build system, e.g. Gradle or
 
 **Gradle**
 
-    implementation 'net.skobow:apikey-authentication-spring-boot-starter:0.5.1'
+    implementation 'net.skobow:apikey-authentication-spring-boot-starter:0.6.0'
     
  **Maven**
  
