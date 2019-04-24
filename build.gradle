@@ -27,19 +27,19 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'signing'
-    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
-    id 'com.github.ben-manes.versions' version '0.20.0'
+    id 'io.spring.dependency-management' version '1.0.7.RELEASE'
+    id 'com.github.ben-manes.versions' version '0.21.0'
 }
 
 ext {
-    springBootVersion = '2.1.2.RELEASE'
-    springVersion = '5.1.4.RELEASE'
+    springBootVersion = '2.1.4.RELEASE'
+    springVersion = '5.1.6.RELEASE'
     junitVersion = '4.12'
 }
 
 allprojects {
     group 'net.skobow'
-    version '0.5.1'
+    version '0.6.0-SNAPSHOT'
 
     publishing {
         repositories {
