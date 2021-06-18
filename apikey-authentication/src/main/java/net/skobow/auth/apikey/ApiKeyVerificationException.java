@@ -25,7 +25,7 @@
 
 package net.skobow.auth.apikey;
 
-class ApiKeyVerificationException extends Exception {
+public class ApiKeyVerificationException extends Exception {
     ApiKeyVerificationException() {
         super();
     }
