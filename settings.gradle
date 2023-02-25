@@ -22,7 +22,6 @@
  * SOFTWARE.
  *
  */
-
 rootProject.name = 'apikey-authentication-spring-boot-starter'
 include 'apikey-authentication'
 include 'apikey-authentication-spring-boot-autoconfigure'

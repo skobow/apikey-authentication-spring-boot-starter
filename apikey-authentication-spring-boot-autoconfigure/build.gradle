@@ -29,10 +29,10 @@ plugins {
 
 dependencies {
 
-    compile(project(':apikey-authentication'))
+    implementation(project(':apikey-authentication'))
 
-    compile("org.springframework.boot:spring-boot:${springBootVersion}")
-    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
 }
 
 publishing {

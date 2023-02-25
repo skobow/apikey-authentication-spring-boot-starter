@@ -29,10 +29,10 @@ plugins {
 
 dependencies {
 
-    compile("org.springframework:spring-context:${springVersion}")
-    compile("org.springframework:spring-webmvc:${springVersion}")
+    implementation("org.springframework:spring-context:${springVersion}")
+    implementation("org.springframework:spring-webmvc:${springVersion}")
 
-    compile('javax.servlet:servlet-api:2.5')
+    implementation('javax.servlet:servlet-api:2.5')
 }
 
 publishing {

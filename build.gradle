@@ -34,12 +34,12 @@ plugins {
 ext {
     springBootVersion = '2.1.4.RELEASE'
     springVersion = '5.1.6.RELEASE'
-    junitVersion = '4.12'
+    junitVersion = '4.13.1'
 }
 
 allprojects {
     group 'net.skobow'
-    version '0.6.0'
+    version '0.6.1'
 
     publishing {
         repositories {
@@ -85,14 +85,14 @@ subprojects {
     }
 
     dependencies {
-        compile('org.slf4j:slf4j-api:1.7.25')
-        testCompile("org.springframework:spring-test:${springVersion}")
-        testCompile("junit:junit:${rootProject.junitVersion}")
+        implementation('org.slf4j:slf4j-api:1.7.25')
+        testImplementation("org.springframework:spring-test:${springVersion}")
+        testImplementation("junit:junit:${rootProject.junitVersion}")
     }
 }
 
 dependencies {
-    compile(project(':apikey-authentication-spring-boot-autoconfigure'))
+    implementation(project(':apikey-authentication-spring-boot-autoconfigure'))
 }
 
 publishing {
