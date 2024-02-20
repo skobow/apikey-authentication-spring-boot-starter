@@ -1,6 +1,7 @@
 # API Key Authentication Spring Boot Starter
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.skobow/apikey-authentication-spring-boot-starter/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/net.skobow/apikey-authentication-spring-boot-starter)
+[![javadoc](https://javadoc.io/badge2/net.skobow/apikey-authentication-spring-boot-starter/javadoc.svg)](https://javadoc.io/doc/net.skobow/apikey-authentication-spring-boot-starter)
 
 ## Description
 
