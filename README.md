@@ -3,6 +3,8 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/net.skobow/apikey-authentication-spring-boot-starter/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/net.skobow/apikey-authentication-spring-boot-starter)
 [![javadoc](https://javadoc.io/badge2/net.skobow/apikey-authentication-spring-boot-starter/javadoc.svg)](https://javadoc.io/doc/net.skobow/apikey-authentication-spring-boot-starter)
 
+**This repository is not maintained anymore!**
+
 ## Description
 
 This Spring Boot starter provides easy to use and though configurable API Key authentication for your Spring Boot project. 
